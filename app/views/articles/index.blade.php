@@ -12,30 +12,24 @@
 
 @section('content')
 <h3 class="page-header articles-header">
-    <a href="{{URL::route('articles.create')}}" class="btn btn-sm btn-primary pull-right"><i class="fa fa-pencil"></i> Create Article</a>
-    Latest Articles
+    <a href="{{URL::route('articles.create')}}" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-pencil"></i> Create Article</a>
+    <i class="glyphicon glyphicon-star"></i> Latest Articles
 </h3>
 
 @if(count($articles) > 0)
 <div class="articles-wrapper">
-    @foreach(array_chunk($articles->getItems(), 3) as $items)
-    <div class="row article-row">
-        @foreach($items as $item)
-        <div class="col-md-4 col-lg-4">
-            <a href="{{URL::route('articles.show', $item->slug)}}" class="thumbnail">
-                <img src="http://lorempixel.com/500/350/technics/" alt="" class="img-responsive">
-            </a>
-            <h3 class="article-title"><a href="{{URL::route('articles.show', $item->slug)}}">{{$item->title}}</a></h3>
-            <div class="article-meta">
-                Posted {{$item->created_at->diffForHumans()}} by <strong><a href="{{URL::route('users.show', $item->user->username)}}">{{$item->user->username}}</a></strong>
-            </div>
-            <p class="article-snippet">
-                {{$item->snippet}}
-            </p>
-        </div>
+    @if(count($articles))
+        @foreach($articles as $article)
+            @include('articles.partials.row')
         @endforeach
+    @else
+    <div class="block block-info">
+        <h4><i class="fa fa-info"></i> Information</h4>
+        <p>
+            Sorry! We Currently don't have any articles to show. Please check back later.
+        </p>
     </div>
-    @endforeach
+    @endif
 </div>
 <div class="text-center">
     {{$articles->links()}}

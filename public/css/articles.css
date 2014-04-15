@@ -4,11 +4,18 @@
   margin-bottom: 30px;
   padding-bottom: 10px;
 }
-.article-row {
+.article-row-item {
+  padding-bottom: 10px;
   margin-bottom: 30px;
-  padding-bottom: 30px;
   border-bottom: 1px solid #eee;
 }
-.article-row:last-child {
-  margin-bottom: 10px;
+.article-row-item h3.article-title {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.article-row-item .article-meta {
+  margin-bottom: 5px;
+}
+.article-row-item p.article-snippet {
+  line-height: 24px;
 }

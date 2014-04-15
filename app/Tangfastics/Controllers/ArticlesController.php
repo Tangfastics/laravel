@@ -19,7 +19,7 @@ class ArticlesController extends BaseController
 
 	public function index()
 	{
-		$articles = $this->article->findAllPaginated(12);
+		$articles = $this->article->findAllPaginated();
 
 		$this->view('articles.index', compact('articles'));
 	}

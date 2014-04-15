@@ -20,10 +20,10 @@
 
 <ul class="pager">
 	@if($prevArticle)
-	<li class="previous"><a href="{{URL::route('articles.show', $prevArticle->slug)}}">{{$prevArticle->title}}</a></li>
+	<li class="previous"><a href="{{URL::route('articles.show', $prevArticle->slug)}}">&larr; {{$prevArticle->title}}</a></li>
 	@endif
 	@if($nextArticle)
-	<li class="next"><a href="{{URL::route('articles.show', $nextArticle->slug)}}">{{$nextArticle->title}}</a></li>
+	<li class="next"><a href="{{URL::route('articles.show', $nextArticle->slug)}}">{{$nextArticle->title}} &rarr;</a></li>
 	@endif
 </ul>
 @stop

@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" media="screen">
+        <link href="{{asset('css/vendor/yeti.css')}}" rel="stylesheet" media="screen">
         <link href="{{asset('css/global.min.css')}}" rel="stylesheet" media="screen">
         @yield('styles')
     </head>

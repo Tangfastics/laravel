@@ -12,10 +12,14 @@
 .article-row-item h3.article-title {
   margin-top: 0;
   margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 .article-row-item .article-meta {
   margin-bottom: 5px;
+  font-size: 12px;
 }
 .article-row-item p.article-snippet {
   line-height: 24px;
+  font-size: 14px;
 }

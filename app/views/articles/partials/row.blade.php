@@ -10,7 +10,7 @@
 				<a href="{{URL::route('articles.show', $article->slug)}}">{{$article->title}}</a>
 			</h3>
 			<div class="article-meta text-muted">
-				Posted <strong>{{$article->created_at->diffForHumans()}}</strong> by <strong><a href="{{URL::route('users.show', $article->user->username)}}">{{$article->user->username}}</a></strong>
+				Posted <strong>{{$article->created_at->diffForHumans()}}</strong> by <strong><a href="{{URL::route('users.show', $article->user->username)}}">{{$article->user->username}}</a></strong> in <strong><a href="#">Uncategorized</a></strong>
 			</div>
 			<p class="article-snippet">
 				{{$article->snippet}}

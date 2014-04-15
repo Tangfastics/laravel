@@ -108,6 +108,10 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		'Tangfastics\Providers\RepositoryServiceProvider',
+
+		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+
+		'Clockwork\Support\Laravel\ClockworkServiceProvider'
 	),
 
 	/*
@@ -174,6 +178,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 
+		'Sluggable' => 'Cviebrock\EloquentSluggable\Facades\Sluggable',
 	),
 
 );

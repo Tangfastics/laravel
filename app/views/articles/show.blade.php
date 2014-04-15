@@ -7,7 +7,7 @@
 
 
 @section('content')
-<h3 class="page-header article-title">
+<h3 class="page-header article-header">
 	{{$article->title}}
 </h3>
 <div class="article-meta">

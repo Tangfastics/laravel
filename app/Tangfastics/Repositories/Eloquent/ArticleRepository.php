@@ -5,6 +5,7 @@ namespace Tangfastics\Repositories\Eloquent;
 use Illuminate\Support\Str;
 use Tangfastics\Models\User;
 use Tangfastics\Models\Article;
+use Tangfastics\Services\Forms\ArticleForm;
 use Illuminate\Database\Eloquent\Collection;
 use Tangfastics\Repositories\ArticleRepositoryInterface;
 
@@ -39,5 +40,24 @@ class ArticleRepository extends AbstractRepository implements ArticleRepositoryI
 			->where('id', '<>', $article->id)
 			->orderBy('created_at', 'DESC')
 			->first(['id', 'title', 'slug']);
+	}
+
+	public function create(array $data)
+	{
+		$article = $this->getNew();
+
+		$article->user_id = $data['user_id'];
+		$article->title = e($data['title']);
+		$article->snippet = e($data['snippet']);
+		$article->post = e($data['post']);
+
+		$article->save();
+
+		return $article;
+	}
+
+	public function getCreateForm()
+	{
+		return new ArticleForm;
 	}
 }

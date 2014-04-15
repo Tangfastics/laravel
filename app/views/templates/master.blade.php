@@ -54,7 +54,9 @@
 				</li>
 				@yield('breadcrumbs')
 			</ol>
-
+			{{var_dump(Session::get('errors'))}}
+			{{var_dump(Session::get('error'))}}
+			{{var_dump(Session::get('message'))}}
 			@yield('content')
 		</div>
 

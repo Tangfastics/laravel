@@ -1,3 +1,3 @@
-!(function() {
-	$('div.block').delay(3000).slideUp();
-});
+(function($) {
+	$('div.alert').not('.alert-danger').delay(4000).slideUp();
+})(jQuery);

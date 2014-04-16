@@ -7,9 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <!-- Latest compiled and minified CSS & JS -->
-        <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-        <!-- <link href="{{asset('css/vendor/yeti.css')}}" rel="stylesheet" media="screen"> -->
+        <link href="{{asset('css/vendor/united.css')}}" rel="stylesheet" media="screen">
         <link href="{{asset('css/global.min.css')}}" rel="stylesheet" media="screen">
         @yield('styles')
     </head>
@@ -36,15 +34,14 @@
                         <ul class="nav navbar-nav navbar-right">
                             @if(Auth::guest())
                             <li><a href="#"><i class="glyphicon glyphicon-edit"></i> Register</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-log-in"></i> Login</a></li>
+                            <li><a href="{{URl::route('auth.index')}}"><i class="glyphicon glyphicon-log-in"></i> Login</a></li>
                             @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Dropdown <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li><a href="#">Separated link</a></li>
+                                <a href="#" class="dropdown-toggle" id="userDropdown" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> {{Auth::user()->username}} <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="userDropdown">
+                                    <li><a href="#">Settings</a></li>
+                                    <li role="presentation" class="divider"></li>
+                                    <li role="presentation"><a href="{{URL::route('auth.logout')}}"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
                                 </ul>
                             </li>
                             @endif

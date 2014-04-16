@@ -18,3 +18,17 @@ Route::get('articles/rating', ['as' => 'articles.rating', 'uses' => 'Tangfastics
 Route::resource('articles', 'Tangfastics\Controllers\ArticlesController');
 
 Route::resource('users', 'Tangfastics\Controllers\UsersController');
+
+//Auth Routes
+Route::get('login', [
+	'as' => 'auth.index',
+	'uses' => 'Tangfastics\Controllers\AuthController@getIndex'
+]);
+Route::post('login', [
+	'as' => 'auth.login',
+	'uses' => 'Tangfastics\Controllers\AuthController@postLogin'
+]);
+Route::get('logout', [
+	'as' => 'auth.logout',
+	'uses' => 'Tangfastics\Controllers\AuthController@getLogout'
+]);

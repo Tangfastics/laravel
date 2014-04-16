@@ -1,7 +1,7 @@
 <article class="article-row-item">
 	<div class="row">
 		<div class="col-md-2">
-			<a href="{{URL::route('articles.show', $article->slug)}}" class="thumbnail">
+			<a href="{{URL::route('articles.show', $article->slug)}}" class="thumbnail article-thumbnail">
 				<img src="http://placehold.it/500x350" alt="" class="img-responsive">
 			</a>
 		</div>

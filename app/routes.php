@@ -13,5 +13,8 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'Tangfastics\Controllers\ArticlesController@index']);
 
+Route::get('articles/views', ['as' => 'articles.views', 'uses' => 'Tangfastics\Controllers\ArticlesController@index']);
+Route::get('articles/rating', ['as' => 'articles.rating', 'uses' => 'Tangfastics\Controllers\ArticlesController@index']);
 Route::resource('articles', 'Tangfastics\Controllers\ArticlesController');
+
 Route::resource('users', 'Tangfastics\Controllers\UsersController');

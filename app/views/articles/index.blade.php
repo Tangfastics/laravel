@@ -11,10 +11,11 @@
 
 
 @section('content')
-<h3 class="page-header articles-header">
-    <a href="{{URL::route('articles.create')}}" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-pencil"></i> Create Article</a>
-    <i class="glyphicon glyphicon-star"></i> Latest Articles
-</h3>
+<ul class="nav nav-pills nav-articles">
+    <li<?php if(Request::is('/') OR Request::is('articles')):?> class="active"<?php endif; ?>><a href="{{URL::route('articles.index')}}">Latest Articles</a></li>
+    <li<?php if(Request::is('articles/views')):?> class="active"<?php endif; ?>><a href="{{URL::route('articles.views')}}">Most Viewed</a></li>
+    <li<?php if(Request::is('articles/rating')):?> class="active"<?php endif; ?>><a href="{{URL::route('articles.rating')}}">Rated Highest</a></li>
+</ul>
 
 @if(count($articles) > 0)
 <div class="articles-wrapper">

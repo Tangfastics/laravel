@@ -3,17 +3,27 @@
   padding: 0;
   margin-bottom: 30px;
   padding-bottom: 10px;
+  border-color: #008cba;
+  border-width: 3px;
+}
+.nav-articles {
+  border-bottom: 2px solid #008cba;
+  margin-bottom: 20px;
 }
 .article-row-item {
-  padding-bottom: 10px;
-  margin-bottom: 30px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
   border-bottom: 1px solid #eee;
+}
+.article-row-item .article-thumbnail {
+  margin: 0;
 }
 .article-row-item h3.article-title {
   margin-top: 0;
   margin-bottom: 5px;
   text-transform: uppercase;
   font-weight: 500;
+  font-size: 20px;
 }
 .article-row-item .article-meta {
   margin-bottom: 5px;
@@ -21,5 +31,6 @@
 }
 .article-row-item p.article-snippet {
   line-height: 24px;
-  font-size: 14px;
+  font-size: 13px;
+  margin: 0;
 }

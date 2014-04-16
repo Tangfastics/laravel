@@ -8,41 +8,56 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Model implements UserInterface, RemindableInterface
 {
-	
-	public $presenter = 'Tangfastics\Presenters\UserPresenter';
+    
+    public $presenter = 'Tangfastics\Presenters\UserPresenter';
 
-	protected $table = 'users';
+    protected $table = 'users';
 
-	protected $hidden = [ 'password' ];
+    protected $hidden = [ 'password' ];
 
-	protected $softDeletes = true;
+    protected $softDeletes = true;
 
-	protected $attributes = [
-		'is_admin' => false
-	];
+    protected $attributes = [
+        'is_admin' => false
+    ];
 
-	public function articles()
-	{
-		return $this->hasMany('Tangfastics\Article');
-	}
+    public function articles()
+    {
+        return $this->hasMany('Tangfastics\Article');
+    }
 
-	public function getAuthIdentifier()
-	{
-		return $this->getKey();
-	}
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
 
-	public function getAuthPassword()
-	{
-		return $this->password;
-	}
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
 
-	public function getReminderEmail()
-	{
-		return $this->email;
-	}
+    public function getReminderEmail()
+    {
+        return $this->email;
+    }
 
-	public function isAdmin()
-	{
-		return ($this->is_admin == true);
-	}
+    public function getRememberToken()
+    {
+        return $this->remember_token;
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->remember_token = $value;
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'remember_token';
+    }
+
+    public function isAdmin()
+    {
+        return ($this->is_admin == true);
+    }
 }

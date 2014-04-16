@@ -1,16 +1,25 @@
-.articles-header { margin: 0; padding: 0; margin-bottom: 30px; padding-bottom: 10px; }
+.articles-header { margin: 0; padding: 0; margin-bottom: 30px; padding-bottom: 10px; border-color: #008cba; border-width: 3px; }
 
+.nav-articles {
+	border-bottom: 2px solid #008cba;
+	margin-bottom: 20px;
+}
 
 .article-row-item {
-	padding-bottom: 10px;
-	margin-bottom: 30px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
 	border-bottom: 1px solid #eee;
+
+	.article-thumbnail {
+		margin: 0;
+	}
 
 	h3.article-title {
 		margin-top: 0;
 		margin-bottom: 5px;
 		text-transform: uppercase;
 		font-weight: 500;
+		font-size: 20px;
 	}
 
 	.article-meta {
@@ -20,6 +29,7 @@
 
 	p.article-snippet {
 		line-height: 24px;
-		font-size: 14px;
+		font-size: 13px;
+		margin: 0;
 	}
 }

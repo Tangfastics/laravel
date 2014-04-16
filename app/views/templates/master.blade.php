@@ -4,11 +4,12 @@
         <title>{{Config::get('site.global-title', 'Default Title')}}</title>
         <meta charset="UTF-8">
         <meta name=description content="">
-        <meta name=viewport content="width=device-width, initial-scale=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="{{asset('css/vendor/yeti.css')}}" rel="stylesheet" media="screen">
+        <!-- Latest compiled and minified CSS & JS -->
+        <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+        <!-- <link href="{{asset('css/vendor/yeti.css')}}" rel="stylesheet" media="screen"> -->
         <link href="{{asset('css/global.min.css')}}" rel="stylesheet" media="screen">
         @yield('styles')
     </head>

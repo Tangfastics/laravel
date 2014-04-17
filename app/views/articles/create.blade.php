@@ -28,7 +28,7 @@
 	<div class="form-group<?php if($errors->has('snippet')): ?> has-error has-feedback<?php endif; ?>">
 		{{Form::label('snippet', 'Snippet', ['class' => 'col-sm-2 control-label'])}}
 		<div class="col-sm-10">
-			{{Form::textarea('snippet', null, ['class' => 'form-control'])}}
+			{{Form::textarea('snippet', null, ['class' => 'form-control', 'id' => 'editor_snippet'])}}
 			<?php if($errors->has('snippet')): ?>
 				<span class="glyphicon glyphicon-remove form-control-feedback"></span>
 				<span class="help-block">{{$errors->first('snippet')}}</span>
@@ -39,7 +39,7 @@
 	<div class="form-group<?php if($errors->has('post')): ?> has-error has-feedback<?php endif; ?>">
 		{{Form::label('post', 'Post', ['class' => 'col-sm-2 control-label'])}}
 		<div class="col-sm-10">
-			{{Form::textarea('post', null, ['class' => 'form-control'])}}
+			{{Form::textarea('post', null, ['class' => 'form-control', 'id' => 'editor_post'])}}
 			<?php if($errors->has('post')): ?>
 				<span class="glyphicon glyphicon-remove form-control-feedback"></span>
 				<span class="help-block">{{$errors->first('post')}}</span>
@@ -56,5 +56,9 @@
 @stop
 
 @section('scripts')
-
+<script src="{{asset('js/vendor/ckeditor/ckeditor.js')}}"></script>
+<script>
+    CKEDITOR.replace( 'editor_snippet' );
+    CKEDITOR.replace( 'editor_post' );
+</script>
 @stop

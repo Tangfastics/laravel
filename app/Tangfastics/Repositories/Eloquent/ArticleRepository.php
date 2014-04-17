@@ -47,9 +47,9 @@ class ArticleRepository extends AbstractRepository implements ArticleRepositoryI
 		$article = $this->getNew();
 
 		$article->user_id = $data['user_id'];
-		$article->title = e($data['title']);
-		$article->snippet = e($data['snippet']);
-		$article->post = e($data['post']);
+		$article->title = $data['title'];
+		$article->snippet = $data['snippet'];
+		$article->post = $data['post'];
 
 		$article->save();
 

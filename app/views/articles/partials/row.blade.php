@@ -10,14 +10,14 @@
 				<a href="{{URL::route('articles.show', $article->slug)}}">{{$article->title}}</a>
 			</h3>
 			<div class="article-meta text-muted">
-				Posted <strong>{{$article->created_at->diffForHumans()}}</strong> by <strong><a href="{{URL::route('users.show', $article->user->username)}}">{{$article->user->username}}</a></strong><?php if (count($article->categories)): ?> | Filed Under: <?php foreach($article->categories as $category): ?><strong><a href="">{{$category->name}}</a></strong> <?php endforeach; ?><?php endif; ?>
+				Posted <strong>{{$article->created_at->diffForHumans()}}</strong> by <strong><a href="{{URL::route('users.show', $article->user->username)}}">{{$article->user->username}}</a></strong><?php if (count($article->categories)): ?> | Filed Under: <?php foreach($article->categories as $category): ?><strong><a href="{{URL::route('categories.show', $category->slug)}}">{{$category->name}}</a></strong> <?php endforeach; ?><?php endif; ?>
 			</div>
 			<p class="article-snippet">
 				{{$article->snippet}}
 			</p>
 			<?php if (count($article->tags)): ?>
 			<div class="article-tags">
-				Tags: <?php foreach($article->tags as $tag): ?><a href="" class="label label-primary">{{$tag->name}}</a> <?php endforeach; ?>
+				Tags: <?php foreach($article->tags as $tag): ?><a href="{{URL::route('tags.show', $tag->slug)}}" class="label label-primary">{{$tag->name}}</a> <?php endforeach; ?>
 			</div>
 			<?php endif; ?>
 		</div>

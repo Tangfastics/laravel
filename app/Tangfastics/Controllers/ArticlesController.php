@@ -3,16 +3,25 @@
 namespace Tangfastics\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
+use Tangfastics\Repositories\TagRepositoryInterface;
 use Tangfastics\Repositories\ArticleRepositoryInterface;
+use Tangfastics\Repositories\CategoryRepositoryInterface;
 
 class ArticlesController extends BaseController
 {
 	protected $article;
 
-	public function __construct(ArticleRepositoryInterface $article)
+	protected $categories;
+
+	protected $tags;
+
+	public function __construct(ArticleRepositoryInterface $article, CategoryRepositoryInterface $categories, TagRepositoryInterface $tags)
 	{
 		$this->article = $article;
+		$this->categories = $categories;
+		$this->tags = $tags;
 
 		parent::__construct();
 	}
@@ -21,7 +30,9 @@ class ArticlesController extends BaseController
 	{
 		$articles = $this->article->findAllPaginated();
 
-		$this->view('articles.index', compact('articles'));
+		$breadcrumb = Lang::get('articles.latest_articles');
+
+		$this->view('articles.index', compact('articles', 'breadcrumb'));
 	}
 
 	public function show($slug)
@@ -36,6 +47,24 @@ class ArticlesController extends BaseController
 		$prevArticle = $this->article->findPreviousArticle($article);
 
 		$this->view('articles.show', compact('article', 'nextArticle', 'prevArticle'));
+	}
+
+	public function showCategory($category)
+	{
+		list($category, $articles) = $this->article->findByCategory($category);
+
+		$breadcrumb = Lang::get('articles.viewing_category', ['category' => $category->name]);
+
+		$this->view('articles.index', compact('articles', 'breadcrumb'));
+	}
+
+	public function showTag($tag)
+	{
+		list($tag, $articles) = $this->article->findByTag($tag);
+
+		$breadcrumb = Lang::get('articles.viewing_tag', ['tag' => $tag->name]);
+
+		$this->view('articles.index', compact('articles', 'breadcrumb'));
 	}
 
 	public function create()

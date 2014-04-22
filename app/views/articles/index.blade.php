@@ -6,7 +6,7 @@
 <li>
     <a href="{{URL::route('articles.index')}}">Articles</a>
 </li>
-<li class="active">Latest</li>
+<li class="active">{{$breadcrumb}}</li>
 @stop
 
 

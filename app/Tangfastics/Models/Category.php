@@ -4,9 +4,9 @@ namespace Tangfastics\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Category extends Model
 {
-	protected $table = "tags";
+	protected $table = 'categories';
 
 	public static $sluggable = [
         'build_from' => 'name',

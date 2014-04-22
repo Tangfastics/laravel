@@ -10,7 +10,7 @@ class Article extends Model
 
     public $presenter = 'Tangfastics\Presenters\ArticlePresenter';
 
-    protected $with = ['user', 'tags'];
+    protected $with = ['user', 'tags', 'categories'];
 
     protected $softDeletes = true;
 
@@ -29,5 +29,10 @@ class Article extends Model
     public function tags()
     {
         return $this->belongsToMany('Tangfastics\Models\Tag');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany('Tangfastics\Models\Category');
     }
 }

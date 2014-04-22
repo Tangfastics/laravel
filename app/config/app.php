@@ -111,7 +111,9 @@ return array(
 
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 
-		'Clockwork\Support\Laravel\ClockworkServiceProvider'
+		'Clockwork\Support\Laravel\ClockworkServiceProvider',
+
+		'TwigBridge\TwigServiceProvider',
 	),
 
 	/*

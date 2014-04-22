@@ -15,6 +15,9 @@
 			<p class="article-snippet">
 				{{$article->snippet}}
 			</p>
+			<div class="article-tags">
+				Tags: <?php foreach($article->tags as $tag): ?><a href="" class="label label-primary">{{$tag->name}}</a> <?php endforeach; ?>
+			</div>
 		</div>
 	</div>
 </article>

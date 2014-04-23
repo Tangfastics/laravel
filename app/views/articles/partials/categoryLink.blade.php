@@ -1,0 +1,1 @@
+<strong><a href="{{URL::route('categories.show', $category->slug)}}">{{$category->name}}</a></strong>

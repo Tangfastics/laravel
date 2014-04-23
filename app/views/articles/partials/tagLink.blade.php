@@ -1,0 +1,1 @@
+<strong><a href="{{URL::route('tags.show', $tag->slug)}}">{{$tag->name}}</a></strong>

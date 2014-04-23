@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{{Config::get('site.global-title', 'Default Title')}}</title>
+        <title>
+            @yield('title', 'Unknown Title') 
+            | 
+            {{Config::get('site.global-title', 'Default Title')}}
+        </title>
         <meta charset="UTF-8">
         <meta name=description content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,6 +44,8 @@
                                 <a href="#" class="dropdown-toggle" id="userDropdown" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> {{Auth::user()->username}} <b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="userDropdown">
                                     <li><a href="#">Settings</a></li>
+                                    <li role="presentation" class="divider"></li>
+                                    <li role="presentation"><a href="{{URL::route('articles.create')}}"><i class="glyphicon glyphicon-pencil"></i> Create Article</a></li>
                                     <li role="presentation" class="divider"></li>
                                     <li role="presentation"><a href="{{URL::route('auth.logout')}}"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
                                 </ul>

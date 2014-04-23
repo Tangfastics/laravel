@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"cviebrock/eloquent-sluggable": "1.0.*",
-		"rcrowe/twigbridge": "0.5.*"
+		"rcrowe/twigbridge": "0.5.*",
+		"mccool/laravel-auto-presenter": "1.*"
 	},
 	"autoload": {
 		"classmap": [

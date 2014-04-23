@@ -87,6 +87,9 @@ class ArticleRepository extends AbstractRepository implements ArticleRepositoryI
 
         $article->save();
 
+        $article->tags()->sync($data['tags']);
+        $article->categories()->sync($data['categories']);
+
         return $article;
     }
 

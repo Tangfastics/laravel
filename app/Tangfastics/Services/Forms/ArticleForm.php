@@ -13,7 +13,7 @@ class ArticleForm extends AbstractForm
 	public function getInputData()
 	{
 		return array_only($this->inputData, [
-			'title', 'snippet', 'post'
+			'title', 'snippet', 'post', 'tags', 'categories'
 		]);
 	}
 }

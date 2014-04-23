@@ -114,6 +114,8 @@ return array(
 		'Clockwork\Support\Laravel\ClockworkServiceProvider',
 
 		'TwigBridge\TwigServiceProvider',
+
+		'McCool\LaravelAutoPresenter\LaravelAutoPresenterServiceProvider',
 	),
 
 	/*

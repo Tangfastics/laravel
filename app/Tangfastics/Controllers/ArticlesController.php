@@ -31,17 +31,19 @@ class ArticlesController extends BaseController
 		$articles = $this->article->findAllPaginated();
 
 		$breadcrumb = Lang::get('articles.latest_articles');
+		$type      = \Lang::get('articles.type_latest');
+        $pageTitle = \Lang::get('articles.browsing_latest');
 
-		$this->view('articles.index', compact('articles', 'breadcrumb'));
+		$this->view('articles.index', compact('articles', 'breadcrumb', 'type', 'pageTitle'));
 	}
 
 	public function show($slug)
 	{
-		if (is_null($slug)) return Redirect::route('articles.index')->withError('No article slug was found.');
+		if (is_null($slug)) return Redirect::route('articles.index')->withError(Lang::get('articles.error_no_slug'));
 
 		$article = $this->article->findBySlug($slug);
 
-		if (is_null($article)) return Redirect::route('articles.index')->withError('There was no article found using that slug.');
+		if (is_null($article)) return Redirect::route('articles.index')->withError(Lang::get('articles.error_no_article'));
 
 		$nextArticle = $this->article->findNextArticle($article);
 		$prevArticle = $this->article->findPreviousArticle($article);
@@ -54,8 +56,10 @@ class ArticlesController extends BaseController
 		list($category, $articles) = $this->article->findByCategory($category);
 
 		$breadcrumb = Lang::get('articles.viewing_category', ['category' => $category->name]);
+		$type = Lang::get('articles.type_category', array('category' => $category->name));
+        $pageTitle = Lang::get('articles.browsing_category', array('category' => $category->name));
 
-		$this->view('articles.index', compact('articles', 'breadcrumb'));
+		$this->view('articles.index', compact('articles', 'breadcrumb', 'type', 'pageTitle'));
 	}
 
 	public function showTag($tag)
@@ -63,13 +67,18 @@ class ArticlesController extends BaseController
 		list($tag, $articles) = $this->article->findByTag($tag);
 
 		$breadcrumb = Lang::get('articles.viewing_tag', ['tag' => $tag->name]);
+		$type = Lang::get('articles.type_tag', array('tag' => $tag->name));
+        $pageTitle = Lang::get('articles.browsing_tag', array('tag' => $tag->name));
 
-		$this->view('articles.index', compact('articles', 'breadcrumb'));
+		$this->view('articles.index', compact('articles', 'breadcrumb', 'type', 'pageTitle'));
 	}
 
 	public function create()
 	{
-		return $this->view('articles.create');
+		$tags = $this->tags->listAll();
+		$categories = $this->categories->listAll();
+
+		return $this->view('articles.create', compact('tags', 'categories'));
 	}
 
 	public function store()
@@ -85,6 +94,6 @@ class ArticlesController extends BaseController
 
 		$article = $this->article->create($data);
 
-		return Redirect::route('articles.index')->withMessage('The new article has been added successfully.');
+		return Redirect::route('articles.index')->withMessage(Lang::get('articles.message_post_successful'));
 	}
 }

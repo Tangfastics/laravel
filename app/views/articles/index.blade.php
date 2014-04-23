@@ -1,3 +1,5 @@
+@section('title', $pageTitle)
+
 @section('styles')
 <link href="{{asset('css/articles.css')}}" rel="stylesheet" media="screen">
 @stop
@@ -11,12 +13,15 @@
 
 
 @section('content')
-<a href="{{URL::route('articles.create')}}" class="btn btn-info pull-right"><i class="glyphicon glyphicon-pencil"></i> Create Article</a>
-<ul class="nav nav-pills nav-articles">
+@if(Request::is('/') || Request::is('articles') || Request::is('articles/views') || Request::is('articles/rating'))
+<ul class="nav nav-pills nav-articles pull-right">
     <li<?php if(Request::is('/') OR Request::is('articles')):?> class="active"<?php endif; ?>><a href="{{URL::route('articles.index')}}">Latest Articles</a></li>
     <li<?php if(Request::is('articles/views')):?> class="active"<?php endif; ?>><a href="{{URL::route('articles.views')}}">Most Viewed</a></li>
     <li<?php if(Request::is('articles/rating')):?> class="active"<?php endif; ?>><a href="{{URL::route('articles.rating')}}">Rated Highest</a></li>
 </ul>
+@endif
+
+<h2 class="articles-header">{{{$type}}} Articles</h2>
 
 @if(count($articles) > 0)
 <div class="articles-wrapper">

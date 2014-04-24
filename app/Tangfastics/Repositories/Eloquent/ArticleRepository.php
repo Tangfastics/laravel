@@ -8,6 +8,7 @@ use Tangfastics\Models\Tag;
 use Tangfastics\Models\Category;
 use Tangfastics\Models\Article;
 use Tangfastics\Services\Forms\ArticleForm;
+use Tangfastics\Services\Forms\ArticleEditForm;
 use Illuminate\Database\Eloquent\Collection;
 use Tangfastics\Repositories\ArticleRepositoryInterface;
 use Tangfastics\Repositories\TagRepositoryInterface;
@@ -60,6 +61,16 @@ class ArticleRepository extends AbstractRepository implements ArticleRepositoryI
         return [$tag, $articles];
     }
 
+    public function listTagsIdsForArticle(Article $article)
+    {
+        return $article->tags->lists('id');
+    }
+
+    public function listCategoriesIdsForArticle(Article $article)
+    {
+        return $article->categories->lists('id');
+    }
+
     public function findNextArticle(Article $article)
     {
         return $this->model->where('created_at', '>=', $article->created_at)
@@ -81,7 +92,21 @@ class ArticleRepository extends AbstractRepository implements ArticleRepositoryI
         $article = $this->getNew();
 
         $article->user_id = $data['user_id'];
-        $article->title = $data['title'];
+        $article->title = e($data['title']);
+        $article->snippet = $data['snippet'];
+        $article->post = $data['post'];
+
+        $article->save();
+
+        $article->tags()->sync($data['tags']);
+        $article->categories()->sync($data['categories']);
+
+        return $article;
+    }
+
+    public function edit(Article $article, array $data)
+    {
+        $article->title = e($data['title']);
         $article->snippet = $data['snippet'];
         $article->post = $data['post'];
 
@@ -96,5 +121,10 @@ class ArticleRepository extends AbstractRepository implements ArticleRepositoryI
     public function getCreateForm()
     {
         return new ArticleForm;
+    }
+
+    public function getEditForm($id)
+    {
+        return new ArticleEditForm($id);
     }
 }

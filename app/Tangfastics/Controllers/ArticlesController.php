@@ -96,4 +96,30 @@ class ArticlesController extends BaseController
 
 		return Redirect::route('articles.index')->withMessage(Lang::get('articles.message_post_successful'));
 	}
+
+	public function edit($slug)
+	{
+		$article = $this->article->findBySlug($slug);
+
+		$tags = $this->tags->listAll();
+		$categories = $this->categories->listAll();
+
+		$selectedTags = $this->article->listTagsIdsForArticle($article);
+		$selectedCategories = $this->article->listCategoriesIdsForArticle($article);
+
+		return $this->view('articles.edit', compact('article', 'tags', 'categories', 'selectedTags', 'selectedCategories'));
+	}
+
+	public function update($slug)
+	{
+		$article = $this->article->findBySlug($slug);
+		$form = $this->article->getEditForm($article->id);
+
+		if (!$form->isValid()) return Redirect::back()->withErrors($form->getErrors());
+
+		$data = $form->getInputData();
+		$article = $this->article->edit($article, $data);
+
+		return Redirect::route('articles.index')->withMessage(Lang::get('articles.message_update_successful'));
+	}
 }

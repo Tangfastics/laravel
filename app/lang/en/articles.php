@@ -11,6 +11,7 @@ return [
 'error_no_article' => 'There was no article found using that slug.',
 
 'message_post_successful' => 'The new article has been added successfully.',
+'message_update_successful' => 'Article has been updated successfully.',
 
 'placeholder_tags' => 'Select Tags',
 'placeholder_categories' => 'Select Categories',

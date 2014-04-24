@@ -12,14 +12,22 @@
 <div class="form-group">
     {{Form::label('tags[]', 'Tags', ['class' => 'col-sm-2 control-label'])}}
     <div class="col-sm-10">
+        @if(isset($selectedTags))
+        {{Form::select('tags[]', $tags, $selectedTags, ['multiple', 'id' => 'tags', 'placeholder' => Lang::get('articles.placeholder_tags'), 'class' => 'form-control'])}}
+        @else
         {{Form::select('tags[]', $tags, null, ['multiple', 'id' => 'tags', 'placeholder' => Lang::get('articles.placeholder_tags'), 'class' => 'form-control'])}}
+        @endif
     </div>
 </div>
 
 <div class="form-group">
     {{Form::label('categories[]', 'Categories', ['class' => 'col-sm-2 control-label'])}}
     <div class="col-sm-10">
+        @if(isset($selectedCategories))
+        {{Form::select('categories[]', $categories, $selectedCategories, ['multiple', 'id' => 'categories', 'placeholder' => Lang::get('articles.placeholder_categories'), 'class' => 'form-control'])}}
+        @else
         {{Form::select('categories[]', $categories, null, ['multiple', 'id' => 'categories', 'placeholder' => Lang::get('articles.placeholder_categories'), 'class' => 'form-control'])}}
+        @endif
     </div>
 </div>
 

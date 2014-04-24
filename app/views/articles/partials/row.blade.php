@@ -6,6 +6,12 @@
 			</a>
 		</div>
 		<div class="col-md-10">
+			<div class="dropdown pull-right">
+				<button class="btn btn-info btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i></button>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+					<li role="presentation"><a href="{{URL::route('articles.edit', $article->slug)}}" role="menuitem" tabindex="-1"><i class="glyphicon glyphicon-edit"></i> Edit</a></li>
+				</ul>
+			</div>
 			<h3 class="article-title">
 				<a href="{{URL::route('articles.show', $article->slug)}}">{{$article->title}}</a>
 			</h3>

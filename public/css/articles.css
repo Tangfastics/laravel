@@ -45,3 +45,40 @@
 .article-row-item .article-tags {
   margin-top: 5px;
 }
+.upload-thumbnail {
+  position: relative;
+}
+.upload-thumbnail .thumb-pic {
+  width: 262px;
+  height: 140px;
+  float: left;
+  display: inline-block;
+  position: relative;
+  background: url('http://lorempixel.com/500/300/') no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.upload-thumbnail .btn {
+  cursor: pointer;
+  *zoom: 1;
+  *display: inline;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  position: absolute;
+  right: 10px;
+  top: 100px;
+}
+.upload-thumbnail .btn input {
+  top: 0;
+  right: 0;
+  z-index: 2;
+  position: absolute;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  font-size: 50px;
+  cursor: pointer;
+}

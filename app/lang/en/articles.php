@@ -24,4 +24,6 @@ return [
 'browsing_category' => 'Viewing Category ":category"',
 'browsing_tag' => 'Viewing Articles Tagged ":tag"',
 
+'control_upload_thumbnail' => 'Select Image',
+
 ];

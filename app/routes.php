@@ -21,24 +21,38 @@ Route::resource('users', 'Tangfastics\Controllers\UsersController');
 
 //Auth Routes
 Route::get('login', [
-	'as' => 'auth.index',
-	'uses' => 'Tangfastics\Controllers\AuthController@getIndex'
+    'as' => 'auth.index',
+    'uses' => 'Tangfastics\Controllers\AuthController@getIndex'
 ]);
 Route::post('login', [
-	'as' => 'auth.login',
-	'uses' => 'Tangfastics\Controllers\AuthController@postLogin'
+    'as' => 'auth.login',
+    'uses' => 'Tangfastics\Controllers\AuthController@postLogin'
 ]);
 Route::get('logout', [
-	'as' => 'auth.logout',
-	'uses' => 'Tangfastics\Controllers\AuthController@getLogout'
+    'as' => 'auth.logout',
+    'uses' => 'Tangfastics\Controllers\AuthController@getLogout'
 ]);
 
 Route::get('categories/{category_slug}', [
-        'as'   => 'categories.show',
-        'uses' => 'Tangfastics\Controllers\ArticlesController@showCategory'
+    'as'   => 'categories.show',
+    'uses' => 'Tangfastics\Controllers\ArticlesController@showCategory'
 ]);
 
 Route::get('tags/{tag_slug}', [
-        'as'   => 'tags.show',
-        'uses' => 'Tangfastics\Controllers\ArticlesController@showTag'
+    'as'   => 'tags.show',
+    'uses' => 'Tangfastics\Controllers\ArticlesController@showTag'
 ]);
+
+Route::post('articles/thumbnail', [
+    'as'    => 'articles.thumbnail',
+    'uses' => 'Tangfastics\Controllers\ArticlesController@postThumbnail'
+]);
+
+Route::get('test', function()
+{
+    return View::make('test.modal');
+});
+Route::post('test', ['as' => 'test.upload', function()
+{
+    return "uploaded!";
+}]);
